@@ -7,7 +7,7 @@
 
 step-1:
 
-        git clone https://github.com/mpowersocialent/intelehealthdocker.git
+        git clone --depth=1 https://github.com/mpowersocialent/intelehealthdocker.git
 
 step-2:
 
