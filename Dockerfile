@@ -1,4 +1,4 @@
-FROM ubuntu:jammy
+FROM fahadkabir/ubuntu:jammy
 
 RUN apt-get update -y
 RUN apt-get upgrade -y
