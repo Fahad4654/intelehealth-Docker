@@ -15,18 +15,30 @@ services:
     volumes:
       - db_data:/var/lib/mysql
       - ./DB:/docker-entrypoint-initdb.d/
+    networks:
+      custom_network:
+        ipv4_address: 192.168.100.10
 
   openmrs:
-      build: .
-      image: intelehealth-openmrs:1.0
-      restart: "unless-stopped"
-      container_name: openmrs
-      ports:
-         - "9876:8080"
-      command: /bin/bash -c "/root/tomcatStart.sh && tail -f /opt/tomcat8/logs/catalina.out"
-
-      depends_on:
-         - mysql
+    build: .
+    image: intelehealth-openmrs:1.0
+    restart: "unless-stopped"
+    container_name: openmrs
+    ports:
+      - "9876:8080"
+    command: /bin/bash -c "/root/mindmap.sh && /root/tomcatStart.sh && tail -f /opt/tomcat8/logs/catalina.out"
+    depends_on:
+      - mysql
+    networks:
+      custom_network:
+        ipv4_address: 192.168.100.11
 
 volumes:
   db_data:
+
+networks:
+  custom_network:
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.100.0/24
