@@ -16,9 +16,12 @@ COPY ./files/openmrs-runtime.properties /root/.OpenMRS/
 COPY ./files/openmrs-runtime.properties /opt/tomcat8/bin/
 COPY ./files/modules/ /root/.OpenMRS/modules/
 COPY ./scripts/tomcatStart.sh /root/tomcatStart.sh
+COPY ./scripts/mindmap.sh /root/mindmap.sh
+COPY ./files/mindmap_server.sql /root/DB/mindmap_server.sql
 
 RUN chmod -R 777 /root/.OpenMRS
 RUN chmod -R 777 /opt/tomcat8
 RUN chmod +x /root/tomcatStart.sh
+RUN chmod -R 777 /root/mindmap.sh
 
 EXPOSE 8080

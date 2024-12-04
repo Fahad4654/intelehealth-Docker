@@ -5,7 +5,7 @@ echo "Initial delay before checking MySQL..."
 sleep 10
 
 # Wait for MySQL to be available and the database to be fully initialized
-until mysql -h mysql -uopenmrs -popenmrs -e "SHOW TABLES;" openmrs > /dev/null 2>&1; do
+until mysql -h 192.168.100.10 -uopenmrs -popenmrs -e "SHOW TABLES;" openmrs > /dev/null 2>&1; do
   echo "Waiting for MySQL to initialize..."
   sleep 10
 done
